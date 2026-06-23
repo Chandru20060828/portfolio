@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chandru G — Full Stack Developer</title>
+  <meta name="description" content="Full Stack Web Developer specializing in scalable web apps, REST APIs, and modern UI." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Admin trigger button — subtle, bottom-right */
+    #adminTrigger {
+      position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+      width: 42px; height: 42px; border-radius: 50%;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.3); font-size: 18px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s; backdrop-filter: blur(8px);
+    }
+    #adminTrigger:hover { background: rgba(0,212,255,0.15); border-color: var(--cyan); color: var(--cyan); }
+    /* Loading skeleton */
+    .skeleton { background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 4px; }
+    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+    .loading-bar { height: 16px; margin: 8px 0; width: 70%; }
+    .profile-img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAV ════════════════════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#hero">
+        <span class="logo-bracket">&lt;</span><span id="navInitials">CG</span><span class="logo-bracket">/&gt;</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Hire Me</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#about" class="mob-link">About</a></li>
+      <li><a href="#skills" class="mob-link">Skills</a></li>
+      <li><a href="#projects" class="mob-link">Projects</a></li>
+      <li><a href="#services" class="mob-link">Services</a></li>
+      <li><a href="#testimonials" class="mob-link">Reviews</a></li>
+      <li><a href="#contact" class="mob-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- ═══ HERO ═══════════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <canvas id="heroCanvas"></canvas>
+    <div class="hero-content reveal">
+      <div class="hero-eyebrow">
+        <span class="dot"></span> <span id="heroAvailability">Available for Freelance</span>
+      </div>
+      <h1 class="hero-name" id="heroName">Chandru G</h1>
+      <h2 class="hero-role">
+        <span class="static-text">I'm a </span>
+        <span class="typed-text" id="typedText"></span>
+        <span class="cursor">|</span>
+      </h2>
+      <p class="hero-tagline" id="heroTagline">
+        I design and build scalable, fast, and modern web applications<br class="br-desk" />
+        that help businesses grow online.
+      </p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="#contact" class="btn btn-outline">Hire Me →</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="code-card reveal-right">
+        <div class="code-card-header">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="code-card-title">app.js</span>
+        </div>
+        <pre class="code-snippet"><span class="c-kw">const</span> <span class="c-fn">express</span> = require(<span class="c-str">'express'</span>);
+<span class="c-kw">const</span> app = <span class="c-fn">express</span>();
+
+app.<span class="c-fn">get</span>(<span class="c-str">'/'</span>, (req, res) =&gt; {
+  res.<span class="c-fn">json</span>({
+    developer: <span class="c-str" id="codeDevName">'Chandru G'</span>,
+    status: <span class="c-str">'available'</span>,
+    skills: [<span class="c-str">'MERN'</span>, <span class="c-str">'APIs'</span>],
+    hire: <span class="c-bool">true</span>
+  });
+});
+
+app.<span class="c-fn">listen</span>(<span class="c-num">3000</span>);</pre>
+        <div class="code-card-footer">
+          <span class="pill">Running on port 3000</span>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+      <span>Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- ═══ ABOUT ══════════════════════════════════════ -->
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image-col reveal">
+          <div class="profile-frame">
+            <div class="profile-placeholder">
+              <img id="profileImg" src="profile.png" alt="Chandru G" class="profile-img" />
+            </div>
+            <div class="profile-glow"></div>
+            <div class="profile-chip chip-1"><span class="chip-dot"></span>Open to Work</div>
+            <div class="profile-chip chip-2">⭐ 4.5 Rating</div>
+          </div>
+        </div>
+        <div class="about-text-col reveal-right">
+          <span class="section-eyebrow">About Me</span>
+          <h2 class="section-title">Developer who thinks<br/><span class="gradient-text">like a business owner</span></h2>
+          <p class="about-bio" id="bio1">Loading...</p>
+          <p class="about-bio" id="bio2">Loading...</p>
+          <div class="about-facts">
+            <div class="fact"><span class="fact-icon">🔧</span><div><strong>Full Stack</strong><small>Frontend to backend</small></div></div>
+            <div class="fact"><span class="fact-icon">⚡</span><div><strong>Fast Delivery</strong><small>Deadline-driven mindset</small></div></div>
+            <div class="fact"><span class="fact-icon">🤝</span><div><strong>Client-First</strong><small>Client Success</small></div></div>
+          </div>
+          <a href="#contact" class="btn btn-primary mt-16">Let's Work Together</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SKILLS ═════════════════════════════════════ -->
+  <section class="section skills" id="skills">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Technical Stack</span>
+        <h2 class="section-title">Skills &amp; Technologies</h2>
+        <p class="section-sub">The tools I use to build powerful, modern web applications</p>
+      </div>
+      <div class="skills-grid" id="skillsGrid">
+        <!-- Rendered dynamically -->
+      </div>
+      <div class="tech-tags reveal" id="techTags"><!-- Rendered dynamically --></div>
+    </div>
+  </section>
+
+  <!-- ═══ PROJECTS ════════════════════════════════════ -->
+  <section class="section projects" id="projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Portfolio</span>
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-sub">Real-world applications solving real business problems</p>
+      </div>
+      <div class="projects-grid" id="projectsGrid">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SERVICES ════════════════════════════════════ -->
+  <section class="section services" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">What I Offer</span>
+        <h2 class="section-title">Services</h2>
+        <p class="section-sub">End-to-end development services tailored to your business goals</p>
+      </div>
+      <div class="services-grid" id="servicesGrid"><!-- Rendered dynamically --></div>
+    </div>
+  </section>
+
+  <!-- ═══ STATS ═══════════════════════════════════════ -->
+  <section class="section stats" id="stats">
+    <div class="container">
+      <div class="stats-grid" id="statsGrid"><!-- Rendered dynamically --></div>
+    </div>
+  </section>
+
+  <!-- ═══ TESTIMONIALS ══════════════════════════════════ -->
+  <section class="section testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Kind Words</span>
+        <h2 class="section-title">Client <span class="gradient-text">Testimonials</span></h2>
+        <p class="section-sub">Hear what clients and collaborators have to say about working with me.</p>
+      </div>
+      <div class="testimonials-grid" id="testimonialsGrid">
+        <!-- Approved reviews rendered dynamically -->
+      </div>
+      <div class="testimonials-cta reveal">
+        <p class="testimonials-cta-text">Worked with me? I'd love to hear from you.</p>
+        <button class="btn btn-outline" onclick="openReviewModal()">✍️ Write a Review</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ REVIEW MODAL ══════════════════════════════════ -->
+  <div class="review-modal-overlay" id="reviewModalOverlay" onclick="closeReviewModal(event)">
+    <div class="review-modal" id="reviewModal">
+      <button class="review-modal-close" onclick="closeReviewModal()">&times;</button>
+      <h3 class="review-modal-title">Write a Review</h3>
+      <p class="review-modal-sub">Share your experience working with Chandru G.</p>
+      <div id="reviewFormMsg" class="form-msg" style="display:none;"></div>
+      <div class="form-group">
+        <label for="reviewName">Your Name <span style="color:var(--cyan)">*</span></label>
+        <input type="text" id="reviewName" placeholder="e.g. Alex Johnson" autocomplete="name" />
+        <span class="field-error" id="reviewNameError"></span>
+      </div>
+      <div class="form-group">
+        <label for="reviewCompany">Company / Organisation</label>
+        <input type="text" id="reviewCompany" placeholder="e.g. Acme Corp (optional)" />
+      </div>
+      <div class="form-group">
+        <label>Rating <span style="color:var(--cyan)">*</span></label>
+        <div class="star-rating" id="starRating">
+          <span class="star" data-val="1">★</span>
+          <span class="star" data-val="2">★</span>
+          <span class="star" data-val="3">★</span>
+          <span class="star" data-val="4">★</span>
+          <span class="star" data-val="5">★</span>
+        </div>
+        <span class="field-error" id="reviewRatingError"></span>
+      </div>
+      <div class="form-group">
+        <label for="reviewMessage">Your Review <span style="color:var(--cyan)">*</span></label>
+        <textarea id="reviewMessage" rows="4" placeholder="Tell others about your experience..."></textarea>
+        <span class="field-error" id="reviewMessageError"></span>
+      </div>
+      <button class="btn btn-primary full-width" id="reviewSubmitBtn" onclick="submitReview()">Submit Review →</button>
+    </div>
+  </div>
+
+  <!-- ═══ CONTACT ═════════════════════════════════════ -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-left reveal">
+          <span class="section-eyebrow">Get In Touch</span>
+          <h2 class="section-title">Let's build something<br/><span class="gradient-text">powerful together.</span></h2>
+          <p class="contact-desc">Have a project in mind? Whether it's a new web app, an API, or you just need to fix something — I'm here to help. Let's talk.</p>
+          <div class="contact-actions">
+            <a id="emailLink" href="mailto:chandru2006tj@gmail.com" class="contact-link">
+              <span class="contact-link-icon">📧</span>
+              <div><strong>Email Me</strong><small id="emailText">chandru2006tj@gmail.com</small></div>
+            </a>
+            <a id="waLink" href="https://wa.me/919361454392" target="_blank" class="contact-link contact-link-wa">
+              <span class="contact-link-icon">💬</span>
+              <div><strong>WhatsApp</strong><small>Message me directly</small></div>
+            </a>
+          </div>
+        </div>
+        <div class="contact-right reveal-right">
+          <div class="contact-form-card">
+            <h3>Send a Message</h3>
+            <div id="formMsg" class="form-msg" style="display:none;"></div>
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" placeholder="e.g. John Smith" autocomplete="name" />
+              <span class="field-error" id="nameError"></span>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" placeholder="john@company.com" autocomplete="email" />
+              <span class="field-error" id="emailError"></span>
+            </div>
+            <div class="form-group">
+              <label for="phone">Contact Number</label>
+              <input type="tel" id="phone" placeholder="e.g. +91 98765 43210" autocomplete="tel" />
+              <span class="field-error" id="phoneError"></span>
+            </div>
+            <div class="form-group">
+              <label for="project">Project Description</label>
+              <textarea id="project" rows="5" placeholder="Tell me about your project, timeline and budget..."></textarea>
+              <span class="field-error" id="projectError"></span>
+            </div>
+            <button class="btn btn-primary full-width" id="submitBtn" onclick="handleSubmit()">
+              Send Message →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ══════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a class="nav-logo" href="#hero">
+            <span class="logo-bracket">&lt;</span>CG<span class="logo-bracket">/&gt;</span>
+          </a>
+          <p>Full Stack Web Developer · Freelance Engineer<br/><span id="footerLocation">Tiruchirappalli, Tamil Nadu 🇮🇳</span></p>
+        </div>
+        <div class="footer-links-col">
+          <h4>Navigation</h4>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-links-col">
+          <h4>Connect</h4>
+          <a id="socialGithub" href="#" target="_blank">GitHub</a>
+          <a id="socialLinkedin" href="#" target="_blank">LinkedIn</a>
+          <a id="socialUpwork" href="#" target="_blank">Upwork</a>
+          <a id="socialFiverr" href="#" target="_blank">Fiverr</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 <span id="footerName">Chandru G</span>. All rights reserved.</span>
+        <span class="footer-tagline">Built with passion and clean code.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Admin Trigger Button (subtle lock icon) -->
+  <button id="adminTrigger" title="Admin Panel" onclick="window.location.href='/admin'">🔐</button>
+
+  <script src="script.js"></script>
+  <script>
+  /* ── PORTFOLIO DATA LOADER ─────────────────────────── */
+  let portfolioRoles = ['Full Stack Developer', 'Backend Engineer', 'Freelance Developer'];
+
+  async function loadPortfolio() {
+    try {
+      const res  = await fetch('/api/portfolio');
+      const data = await res.json();
+      renderPortfolio(data);
+    } catch (e) {
+      console.warn('Could not load from API, using defaults');
+    }
+  }
+
+  function renderPortfolio(d) {
+    // Hero
+    if (d.hero) {
+      document.getElementById('heroName').textContent    = d.hero.name || 'Chandru G';
+      document.getElementById('heroTagline').textContent = d.hero.tagline || '';
+      document.getElementById('codeDevName').textContent = `'${d.hero.name}'`;
+      document.getElementById('heroAvailability').textContent = d.hero.availableForWork ? 'Available for Freelance' : 'Currently Busy';
+      if (d.hero.roles?.length) portfolioRoles = d.hero.roles;
+      restartTyping(portfolioRoles);
+
+      // initials from name
+      const initials = (d.hero.name||'CG').split(' ').map(w=>w[0]).join('');
+      document.getElementById('navInitials').textContent = initials;
+    }
+    // About
+    if (d.about) {
+      document.getElementById('bio1').textContent = d.about.bio1 || '';
+      document.getElementById('bio2').textContent = d.about.bio2 || '';
+      if (d.about.profileImage) {
+        const imgPath = d.about.profileImage.startsWith('/') ? d.about.profileImage : d.about.profileImage;
+        document.getElementById('profileImg').src = imgPath;
+      }
+    }
+    // Skills
+    if (d.skills?.length) {
+      document.getElementById('skillsGrid').innerHTML = d.skills.map(cat => `
+        <div class="skill-category reveal">
+          <div class="skill-cat-header"><span class="skill-cat-icon">${cat.icon}</span><h3>${cat.category}</h3></div>
+          <div class="skill-items">${(cat.items||[]).map(item => `
+            <div class="skill-item">
+              <div class="skill-label"><span>${item.name}</span><span>${item.level}%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-width="${item.level}"></div></div>
+            </div>`).join('')}
+          </div>
+        </div>`).join('');
+      reinitSkillBars();
+    }
+    // Tech Tags
+    if (d.techTags?.length) {
+      document.getElementById('techTags').innerHTML = d.techTags.map(t => `<span class="tech-tag">${t}</span>`).join('');
+    }
+    // Projects
+    if (d.projects?.length) {
+      document.getElementById('projectsGrid').innerHTML = d.projects.map((p, i) => `
+        <article class="project-card reveal">
+          <div class="project-card-inner">
+            <div class="project-thumb ${p.thumbClass || 'thumb-'+(i+1)}">
+              <div class="project-thumb-icon">${p.thumbIcon || '💻'}</div>
+            </div>
+            <div class="project-body">
+              <div class="project-meta">${(p.tags||[]).map(t=>`<span class="project-tag">${t}</span>`).join('')}</div>
+              <h3 class="project-name">${p.title}</h3>
+              <p class="project-problem"><strong>Problem:</strong> ${p.problem}</p>
+              <p class="project-solution"><strong>Solution:</strong> ${p.solution}</p>
+              <div class="project-stack">${(p.stack||[]).map(s=>`<span>${s}</span>`).join('')}</div>
+              <div class="project-links">
+                ${p.demoUrl ? `<a href="${p.demoUrl}" class="proj-btn btn-demo" target="_blank">Live Demo ↗</a>` : ''}
+                ${p.githubUrl ? `<a href="${p.githubUrl}" class="proj-btn btn-gh" target="_blank">GitHub</a>` : ''}
+              </div>
+            </div>
+          </div>
+        </article>`).join('');
+    }
+    // Services
+    if (d.services?.length) {
+      document.getElementById('servicesGrid').innerHTML = d.services.map(s => `
+        <div class="service-card reveal">
+          <div class="service-icon">${s.icon}</div>
+          <h3>${s.title}</h3>
+          <p>${s.description}</p>
+          <span class="service-benefit">${s.benefit}</span>
+        </div>`).join('');
+    }
+    // Stats
+    if (d.stats?.length) {
+      document.getElementById('statsGrid').innerHTML = d.stats.map(s => `
+        <div class="stat-item reveal">
+          <div class="stat-number" data-target="${s.target}">0</div>
+          <div class="stat-plus">${s.suffix}</div>
+          <div class="stat-label">${s.label}</div>
+        </div>`).join('');
+      reinitCounters();
+    }
+    // Contact
+    if (d.contact) {
+      const emailEl = document.getElementById('emailLink');
+      if (emailEl) emailEl.href = `mailto:${d.contact.email}`;
+      const emailTxt = document.getElementById('emailText');
+      if (emailTxt) emailTxt.textContent = d.contact.email;
+      const waEl = document.getElementById('waLink');
+      if (waEl) waEl.href = `https://wa.me/${d.contact.whatsapp}`;
+      const loc = document.getElementById('footerLocation');
+      if (loc) loc.textContent = d.contact.location;
+    }
+    // Social
+    if (d.social) {
+      const gh = document.getElementById('socialGithub');
+      const li = document.getElementById('socialLinkedin');
+      const uw = document.getElementById('socialUpwork');
+      const fv = document.getElementById('socialFiverr');
+      if (gh) gh.href = d.social.github || '#';
+      if (li) li.href = d.social.linkedin || '#';
+      if (uw) uw.href = d.social.upwork || '#';
+      if (fv) fv.href = d.social.fiverr || '#';
+    }
+    if (d.hero?.name) {
+      document.getElementById('footerName').textContent = d.hero.name;
+      document.title = `${d.hero.name} — Full Stack Developer`;
+    }
+
+    // Reinit reveal observers for dynamic content
+    reinitReveal();
+  }
+
+  function reinitReveal() {
+    const els = document.querySelectorAll('.reveal, .reveal-right');
+    const check = () => {
+      const trigger = window.innerHeight * 0.88;
+      els.forEach(el => { if (el.getBoundingClientRect().top < trigger) el.classList.add('visible'); });
+    };
+    window.addEventListener('scroll', check, { passive: true });
+    check();
+  }
+
+  function reinitSkillBars() {
+    const fills = document.querySelectorAll('.skill-fill');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) fills.forEach(f => { f.style.width = f.dataset.width + '%'; }); });
+    }, { threshold: 0.2 });
+    const sec = document.getElementById('skills');
+    if (sec) observer.observe(sec);
+  }
+
+  function reinitCounters() {
+    const items = document.querySelectorAll('.stat-number');
+    let started = false;
+    const easeOut = t => 1 - Math.pow(1 - t, 3);
+    const animateCounter = el => {
+      const target = parseInt(el.dataset.target, 10);
+      const start  = performance.now();
+      const step   = now => {
+        const p = Math.min((now - start) / 1800, 1);
+        el.textContent = Math.round(easeOut(p) * target);
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting && !started) { started = true; items.forEach(animateCounter); } });
+    }, { threshold: 0.4 });
+    const sec = document.getElementById('stats');
+    if (sec) observer.observe(sec);
+  }
+
+  // Override typing animation to accept dynamic roles
+  let _typingRestart;
+  function restartTyping(roles) {
+    if (_typingRestart) _typingRestart(roles);
+  }
+
+  // Contact form — sends to real API
+  async function handleSubmit() {
+    const nameEl = document.getElementById('name');
+    const emailEl = document.getElementById('email');
+    const projEl  = document.getElementById('project');
+    const nameErr = document.getElementById('nameError');
+    const emailErr = document.getElementById('emailError');
+    const projErr  = document.getElementById('projectError');
+    const msgEl    = document.getElementById('formMsg');
+    const btn      = document.getElementById('submitBtn');
+    let valid = true;
+
+    [nameEl, emailEl, projEl].forEach(el => el.classList.remove('error'));
+    [nameErr, emailErr, projErr].forEach(el => el.textContent = '');
+    msgEl.style.display = 'none';
+
+    if (nameEl.value.trim().length < 2) { nameEl.classList.add('error'); nameErr.textContent = 'Please enter your full name.'; valid = false; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim())) { emailEl.classList.add('error'); emailErr.textContent = 'Enter a valid email address.'; valid = false; }
+    if (projEl.value.trim().length < 20) { projEl.classList.add('error'); projErr.textContent = 'Please describe your project in at least 20 characters.'; valid = false; }
+    if (!valid) return;
+
+    btn.textContent = 'Sending…'; btn.disabled = true;
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: nameEl.value, email: emailEl.value, project: projEl.value })
+      });
+      const data = await res.json();
+      msgEl.className = 'form-msg success';
+      msgEl.textContent = data.success ? `✅ ${data.message}` : `❌ ${data.error}`;
+      msgEl.style.display = 'block';
+      if (data.success) { nameEl.value = emailEl.value = projEl.value = ''; }
+    } catch { msgEl.className = 'form-msg error'; msgEl.textContent = '❌ Network error. Try again.'; msgEl.style.display = 'block'; }
+    btn.textContent = 'Send Message →'; btn.disabled = false;
+  }
+
+  loadPortfolio();
+  </script>
+</body>
+</html>
