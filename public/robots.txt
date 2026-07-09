@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chandru.xyz/sitemap.xml

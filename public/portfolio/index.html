@@ -3,30 +3,140 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chandru G — Full Stack Developer</title>
-  <meta name="description" content="Full Stack Web Developer specializing in scalable web apps, REST APIs, and modern UI." />
+
+  <!-- Primary SEO -->
+  <title>Chandru Ganesh | Full Stack MERN Developer | chandru.xyz</title>
+
+  <meta
+    name="description"
+    content="Official portfolio of Chandru Ganesh, a Full Stack MERN Developer from Tamil Nadu, India. Explore my projects, React, Node.js, Express, MongoDB applications, UI/UX designs, and software development skills."
+  />
+
+  <meta
+    name="keywords"
+    content="Chandru Ganesh, Chandru G, chandru.xyz, Full Stack Developer, MERN Stack Developer, React Developer, Node.js Developer, Express.js, MongoDB, JavaScript, Portfolio, Web Developer, Software Engineer, Frontend Developer, Backend Developer"
+  />
+
+  <meta name="author" content="Chandru Ganesh" />
+  <meta name="robots" content="index, follow" />
+  <meta name="language" content="English" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://chandru.xyz/" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/favicon.ico" />
+
+  <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Chandru Portfolio" />
+  <meta property="og:title" content="Chandru Ganesh | Full Stack MERN Developer" />
+  <meta
+    property="og:description"
+    content="Explore my Full Stack MERN portfolio showcasing React, Node.js, Express, MongoDB, and modern web applications."
+  />
+  <meta property="og:url" content="https://chandru.xyz/" />
+  <meta property="og:image" content="https://chandru.xyz/images/profile.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Chandru Ganesh | Full Stack MERN Developer" />
+  <meta
+    name="twitter:description"
+    content="Official portfolio of Chandru Ganesh. MERN Stack Developer specializing in React, Node.js, Express, and MongoDB."
+  />
+  <meta name="twitter:image" content="https://chandru.xyz/images/profile.jpg" />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Structured Data (Google SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Chandru Ganesh",
+    "url": "https://chandru.xyz",
+    "image": "https://chandru.xyz/images/profile.png",
+    "jobTitle": "Full Stack MERN Developer",
+    "description": "Full Stack Developer specializing in React, Node.js, Express and MongoDB.",
+    "sameAs": [
+      "https://github.com/Chandru20060828",
+      "https://www.linkedin.com/in/chandru-g-3141a4328"
+    ]
+  }
+  </script>
+
   <style>
     /* Admin trigger button — subtle, bottom-right */
     #adminTrigger {
-      position: fixed; bottom: 24px; right: 24px; z-index: 9999;
-      width: 42px; height: 42px; border-radius: 50%;
-      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.3); font-size: 18px; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: all 0.3s; backdrop-filter: blur(8px);
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.3);
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+      backdrop-filter: blur(8px);
     }
-    #adminTrigger:hover { background: rgba(0,212,255,0.15); border-color: var(--cyan); color: var(--cyan); }
-    /* Loading skeleton */
-    .skeleton { background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 4px; }
-    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
-    .loading-bar { height: 16px; margin: 8px 0; width: 70%; }
-    .profile-img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
+
+    #adminTrigger:hover {
+      background: rgba(0,212,255,0.15);
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    .skeleton {
+      background: linear-gradient(
+        90deg,
+        rgba(255,255,255,0.05) 25%,
+        rgba(255,255,255,0.1) 50%,
+        rgba(255,255,255,0.05) 75%
+      );
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 4px;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .loading-bar {
+      height: 16px;
+      margin: 8px 0;
+      width: 70%;
+    }
+
+    .profile-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+    }
   </style>
 </head>
+
 <body>
 
   <!-- ═══ NAV ════════════════════════════════════════ -->
