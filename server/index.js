@@ -61,7 +61,11 @@ function uploadToCloudinary(buffer) {
   });
 }
 
+
 // ── STATIC FILES ──────────────────────────────────────
+// Serve files from public root
+app.use(express.static(path.join(__dirname, '../public')));
+
 app.use('/portfolio', express.static(path.join(__dirname, '../public/portfolio')));
 app.use('/admin',     express.static(path.join(__dirname, '../public/admin')));
 
